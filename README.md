@@ -1,4 +1,4 @@
-# appium-error-screen-source
+# appium-source-viewer
 
 Load image and Appium source tree from local machine and show them.
 
