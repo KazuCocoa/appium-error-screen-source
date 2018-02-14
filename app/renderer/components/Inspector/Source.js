@@ -7,6 +7,7 @@ import {getOptimalXPath} from "../../util";
 const {TreeNode} = Tree;
 const IMPORTANT_ATTRS = [
   'name',
+  'label',
   'content-desc',
   'resource-id',
   'AXDescription',
