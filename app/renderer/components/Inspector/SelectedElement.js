@@ -61,7 +61,7 @@ export default class SelectedElement extends Component {
     }];
 
     // Get the data for the strategies table
-    let findDataSource = _.toPairs(getLocators(attributes, sourceXML)).map(([key, selector]) => ({
+    let findDataSource = _.toPairs(getLocators(attributes, sourceXML.toString())).map(([key, selector]) => ({
       key,
       selector,
       find: key,
@@ -89,13 +89,6 @@ export default class SelectedElement extends Component {
         </Col>
       </Row>}
       <Row justify="center" type="flex" align="middle" gutter={10} className={styles.elementActions}>
-        <Col>
-          <ButtonGroup size="small">
-            <Button disabled={!elementId} icon={!elementInteractionsNotAvailable && !elementId && 'loading'} id='btnTapElement' onClick={() => applyClientMethod()}>Tap</Button>
-            <Button disabled={!elementId} id='btnSendKeysToElement' onClick={() => showSendKeysModal()}>Send Keys</Button>
-            <Button disabled={!elementId} id='btnClearElement' onClick={() => applyClientMethod()}>Clear</Button>
-          </ButtonGroup>
-        </Col>
       </Row>
       {findDataSource.length > 0 && <Table columns={findColumns} dataSource={findDataSource} size="small" pagination={false} />}
       <br />
@@ -110,18 +103,10 @@ export default class SelectedElement extends Component {
         </div>
       }
       {dataSource.length > 0 &&
-      <Row>
-        <Table columns={attributeColumns} dataSource={dataSource} size="small" pagination={false} />
-      </Row>
+        <Row>
+          <Table columns={attributeColumns} dataSource={dataSource} size="small" pagination={false} />
+        </Row>
       }
-      <Modal title='Send Keys'
-        visible={sendKeysModalVisible}
-        okText='Send Keys'
-        cancelText='Cancel'
-        onCancel={hideSendKeysModal}
-        onOk={this.handleSendKeys}>
-            <Input placeholder='Enter keys' value={sendKeys} onChange={(e) => setFieldValue('sendKeys', e.target.value)} />
-      </Modal>
     </div>;
   }
 }

@@ -139,6 +139,14 @@ export default class Inspector extends Component {
         </Card>
         {this.container && <SourceScrollButtons container={this.container} />}
       </div>
+      <div id='selectedElementContainer' className={`${InspectorStyles['source-tree-container']} ${InspectorStyles['element-detail-container']}`}>
+          <Card
+              title={<span><Icon type="tag-o" /> Selected Element</span>}
+              className={InspectorStyles['selected-element-card']}>
+              {path && <SelectedElement {...this.props}/>}
+              {!path && <i>Select an element in the source to begin.</i>}
+          </Card>
+      </div>
     </div>;
 
     let actionControls = <div className={InspectorStyles['action-controls']}>
